@@ -14,12 +14,13 @@ namespace PizzaStore2
         private List<Pizza> pizzalist;
         private List<Drink> drinklist;
         private List<Topping> toppinglist;
+        private double totalprice = 0;
 
 
         internal List<Pizza> Pizzalist { get => pizzalist; set => pizzalist = value; }
         internal List<Drink> Drinklist { get => drinklist; set => drinklist = value; }
         internal List<Topping> Toppinglist { get => toppinglist; set => toppinglist = value; }
-
+        public double Totalprice { get => totalprice; set => totalprice = value; }
 
         public MenuCatalog()
         {
@@ -69,7 +70,69 @@ namespace PizzaStore2
 
             return menu;
         }
-            
+
+        public void CreatePizza(string id, string Name, string Topping, double Price)
+        {
+            Pizza p = new Pizza(id, Name, Topping, Price);
+            pizzalist.Add(p);
+            totalprice += Price;
+        }
+
+        public Pizza SearchPizza(string searchWord)
+        {
+            bool found = false;
+            int index = 0;
+            Pizza foundPizza = null;
+            while (found == false && index <= pizzalist.Count - 1)
+            {
+                if (pizzalist[index].Name.Equals(searchWord))
+                {
+                    found = true;
+                    foundPizza = pizzalist[index];
+                }
+                index++;
+            }
+            if (found == false) throw new PizzaNotFoundExeption();
+            return foundPizza;
+
+        }
+
+        public void DeletePizza(string searchWord)
+        {
+            bool found = false;
+            int index = 0;
+            while (found == false && index <= pizzalist.Count - 1)
+            {
+                if (pizzalist[index].Name.Equals(searchWord))
+                {
+                    found = true;
+                    pizzalist.RemoveAt(index);
+                    
+                }
+                index++;
+            }
+            if (found == false) throw new PizzaNotFoundExeption();
+        }
+
+        public void UpdatePizza(string id, string Name, string Topping, double Price)
+        {
+            bool found = false;
+            int index = 0;
+            while ((found == false) && index <= pizzalist.Count - 1)
+            {
+                if (pizzalist[index].Name.Equals(Name))
+                {
+                    found = true;
+                    pizzalist[index].Name = Name;
+                    pizzalist[index].Topping = Topping;
+                    pizzalist[index].Price = Price;
+                }
+                index++;
+            }
+            if (found == false) throw new PizzaNotFoundExeption();
+
+        }
+
     }
         
 }
