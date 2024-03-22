@@ -14,7 +14,7 @@ namespace PizzaStore2
 
         internal List<Order> Orderlist1 { get => orderlist; set => orderlist = value; }
 
-        public void CreateOrder(Costumer costumer, Pizza pizza, int ordreId)
+        public void CreateOrder(Costumer costumer, List<Pizza> pizza, int ordreId)
         {
             Order o = new Order(pizza, costumer, ordreId);
             orderlist.Add(o);
@@ -27,7 +27,7 @@ namespace PizzaStore2
          //   this.menucatalog = menuCatalog;
             //this.costumeradministration = costumerAdministration;
         //}
-
+       
 
 
         public string PrintOrder()

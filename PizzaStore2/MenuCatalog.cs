@@ -17,7 +17,7 @@ namespace PizzaStore2
         private double totalprice = 0;
 
 
-        internal List<Pizza> Pizzalist { get => pizzalist; set => pizzalist = value; }
+        public List<Pizza> Pizzalist { get => pizzalist; set => pizzalist = value; }
         internal List<Drink> Drinklist { get => drinklist; set => drinklist = value; }
         internal List<Topping> Toppinglist { get => toppinglist; set => toppinglist = value; }
         public double Totalprice { get => totalprice; set => totalprice = value; }

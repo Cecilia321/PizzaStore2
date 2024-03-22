@@ -17,19 +17,33 @@ namespace PizzaStore2
         Costumer Costumer { get; set; }
         private double totalprice;
         public double Totalprice { get => totalprice * 1.25; set => totalprice = value; }
+        private List<Pizza> Pizzas { get; set; }
 
 
-        public Order(Pizza pizza, Costumer costumer, int OrdreId)
-        {
+       /* public Order(Pizza pizza, Costumer costumer, int OrdreId)
+       {
             Pizza = pizza;
             Costumer = costumer;
             ordreId = OrdreId;
             totalprice = 0;
             
+        }*/
+
+        public Order(List<Pizza> pizzas , Costumer costumer, int OrdreId)
+        {
+            Pizzas = pizzas;
+            Costumer = costumer;
+            ordreId = OrdreId;
+            totalprice = 0;
+            foreach (Pizza p in Pizzas) { totalprice += p.Price; }
         }
+
+
         public override string ToString()
         {
-            return "" + Costumer + Pizza + ordreId + totalprice;
+            string piz = "";
+            foreach (Pizza p in Pizzas) piz += p.ToString();
+            return "" + Costumer + piz + ordreId + totalprice;
         }
 
         //public Order()

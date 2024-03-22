@@ -69,9 +69,14 @@ namespace PizzaStore2
             //o.AddPizzaToOrder(menuFunctions.SearchPizza("Margeritha"));
             //Console.WriteLine(o.PrintOrder());
 
-            OrderAdministration orderlist = new OrderAdministration();
-            orderlist.CreateOrder(costumerlist.Costumerlist[0], menuFunctions.Pizzalist[0], 0);
-            Console.WriteLine(orderlist.PrintOrder());
+            OrderAdministration order1 = new OrderAdministration();
+            List<Pizza> pizzas = new List<Pizza>();
+            pizzas.Add(menuFunctions.Pizzalist[0]);
+            pizzas.Add(menuFunctions.Pizzalist[1]);
+            pizzas.Add(menuFunctions.Pizzalist[0]);
+            pizzas.Add(menuFunctions.Pizzalist[1]);
+            order1.CreateOrder(costumerlist.Costumerlist[0], pizzas, 0);
+            Console.WriteLine(order1.PrintOrder());
         }
         
         
