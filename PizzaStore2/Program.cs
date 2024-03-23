@@ -4,10 +4,13 @@
     {
         static void Main(string[] args)
         {
-           Store store = new Store();
+
+            //Console.BackgroundColor = ConsoleColor.Magenta;
+            //Console.ForegroundColor = ConsoleColor.Black;
+            Store store = new Store();
             store.Start();
 
-
+            
 
 
         }

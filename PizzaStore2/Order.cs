@@ -12,30 +12,26 @@ namespace PizzaStore2
     {
      
         private int ordreId;
+        DateTime date;
+        private static int idcounter = 0;
         
         Pizza Pizza { get; set; }
         Costumer Costumer { get; set; }
         private double totalprice;
         public double Totalprice { get => totalprice * 1.25; set => totalprice = value; }
         private List<Pizza> Pizzas { get; set; }
-
-
-       /* public Order(Pizza pizza, Costumer costumer, int OrdreId)
-       {
-            Pizza = pizza;
-            Costumer = costumer;
-            ordreId = OrdreId;
-            totalprice = 0;
-            
-        }*/
+        public int OrdreId { get => ordreId; set => ordreId = value; }
+        public DateTime Date { get => date; private set => date = value; }
 
         public Order(List<Pizza> pizzas , Costumer costumer, int OrdreId)
         {
             Pizzas = pizzas;
             Costumer = costumer;
-            ordreId = OrdreId;
+            this.OrdreId = OrdreId;
             totalprice = 0;
             foreach (Pizza p in Pizzas) { totalprice += p.Price; }
+            Date = DateTime.Now;
+            idcounter++;
         }
 
 
@@ -43,44 +39,10 @@ namespace PizzaStore2
         {
             string piz = "";
             foreach (Pizza p in Pizzas) piz += p.ToString();
-            return "" + Costumer + piz + ordreId + totalprice;
+            return "Ordre: " + OrdreId + "\n" + "Følgende kunde:" + "\n" + Costumer +  "Har den: " + Date.ToString("dd:MM:yy kl HH:mm:ss") + " Bestilt følgende: "
+                + "\n" + piz + "I alt at betale:".PadRight(82) + totalprice + "Kr.";
+            
         }
-
-        //public Order()
-        //{
-        //}
-
-        /* public void CreateOrder()
-         {
-             orderid += menuvalg;
-         }*/
-
-
-
-
-
-        /* public void TotalPrice()
-         {
-             double totalP = 0;
-             foreach (Pizza pizza in pizzalist)
-             {
-                 totalp += pizza.Price;
-
-             }
-
-             foreach (Drink drink in drinklist)
-             {
-                 menu += drink.ToString();
-             }
-
-             foreach (Topping topping in toppinglist)
-             {
-                 menu += topping.ToString();
-
-             }
-
-             return menu;
-         }*/
 
     }
 

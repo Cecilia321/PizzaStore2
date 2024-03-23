@@ -73,10 +73,11 @@ namespace PizzaStore2
             List<Pizza> pizzas = new List<Pizza>();
             pizzas.Add(menuFunctions.Pizzalist[0]);
             pizzas.Add(menuFunctions.Pizzalist[1]);
-            pizzas.Add(menuFunctions.Pizzalist[0]);
-            pizzas.Add(menuFunctions.Pizzalist[1]);
-            order1.CreateOrder(costumerlist.Costumerlist[0], pizzas, 0);
+            order1.CreateOrder(costumerlist.Costumerlist[0], pizzas, 1);
             Console.WriteLine(order1.PrintOrder());
+
+            
+
         }
         
         

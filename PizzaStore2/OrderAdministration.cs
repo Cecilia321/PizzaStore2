@@ -8,8 +8,6 @@ namespace PizzaStore2
 {
     internal class OrderAdministration
     {
-        //private MenuCatalog menucatalog;
-        //private CostumerAdministration costumeradministration;
         private List<Order> orderlist = new List<Order>();
 
         internal List<Order> Orderlist1 { get => orderlist; set => orderlist = value; }
@@ -18,17 +16,8 @@ namespace PizzaStore2
         {
             Order o = new Order(pizza, costumer, ordreId);
             orderlist.Add(o);
-            
+
         }
-
-
-        //public OrderAdministration(MenuCatalog menuCatalog) 
-        //{
-         //   this.menucatalog = menuCatalog;
-            //this.costumeradministration = costumerAdministration;
-        //}
-       
-
 
         public string PrintOrder()
         {
@@ -40,62 +29,55 @@ namespace PizzaStore2
             return ol;
 
         }
-
-       
-
-        
-
-      
-
-        /*public Order SearchOrder(string searchWord)
+        public Order SearchOrder(string searchWord)
         {
             bool found = false;
             int index = 0;
             Order foundOrder = null;
             while (found == false && index <= orderlist.Count - 1)
             {
-                if (orderlist[index].orderId.Equals(searchWord))
+                if (orderlist[index].OrdreId.Equals(searchWord))
                 {
                     found = true;
                     foundOrder = orderlist[index];
                 }
                 index++;
             }
-            if (found == false) throw new CostumerNotFoundExeption();
-            return foundCostumer;
+            if (found == false) throw new OrderNotFoundExeption();
+            return foundOrder;
 
         }
 
-        public void DeleteCostumer(string searchWord)
+        public void DeleteOrder(string searchWord)
         {
             bool found = false;
             int index = 0;
-            while (found == false && index <= costumerlist.Count - 1)
+            while (found == false && index <= orderlist.Count - 1)
             {
-                if (costumerlist[index].Name.Equals(searchWord))
+                if (orderlist[index].OrdreId.Equals(searchWord))
                 {
                     found = true;
-                    costumerlist.RemoveAt(index);
+                    orderlist.RemoveAt(index);
                 }
                 index++;
             }
-            if (found == false) throw new CostumerNotFoundExeption();
+            if (found == false) throw new OrderNotFoundExeption();
         }
 
-        public void UpdateCostumer(string name, int number)
+        public void UpdateOrder(Pizza pizza, Costumer costumer, int orderId)
         {
             bool found = false;
             int index = 0;
-            while ((found == false) && index <= costumerlist.Count - 1)
+            while ((found == false) && index <= orderlist.Count - 1)
             {
-                if (costumerlist[index].Name.Equals(name))
+                if (orderlist[index].OrdreId.Equals(orderId))
                 {
                     found = true;
-                    costumerlist[index].Number = number;
-                    costumerlist[index].Name = name;
+                    orderlist[index].OrdreId = orderId;
                 }
                 index++;
             }
-            if (found == false) throw new CostumerNotFoundExeption();*/
+            if (found == false) throw new OrderNotFoundExeption();
         }
-}
+    }
+}   
