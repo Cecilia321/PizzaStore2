@@ -14,13 +14,11 @@ namespace PizzaStore2
         private List<Pizza> pizzalist;
         private List<Drink> drinklist;
         private List<Topping> toppinglist;
-        private double totalprice = 0;
-
+    
 
         public List<Pizza> Pizzalist { get => pizzalist; set => pizzalist = value; }
         internal List<Drink> Drinklist { get => drinklist; set => drinklist = value; }
         internal List<Topping> Toppinglist { get => toppinglist; set => toppinglist = value; }
-        public double Totalprice { get => totalprice; set => totalprice = value; }
 
         public MenuCatalog()
         {
@@ -33,16 +31,17 @@ namespace PizzaStore2
 
             Drinklist = new List<Drink>()
         {
-            new Drink("Nr. 1", "Cola", 30),
-            new Drink("Nr. 2", "Sprite", 22.50),
-            new Drink("Nr. 3", "Fanta", 25),
+            new Drink("Nr. 1", "Cola", 30.50),
+            new Drink("Nr. 2", "Sprite", 30.50),
+            new Drink("Nr. 3", "Fanta", 30.50),
+            new Drink("Nr. 4", "Pepsi", 29)
         };
 
             Toppinglist = new List<Topping>()
         {
             new Topping("Nr. 1", "Ekstra ost", 10),
-            new Topping("Nr. 2", "Parma skinke", 14),
-            new Topping("Nr. 3", "Løg", 5)
+            new Topping("Nr. 2", "Tilføj Parma skinke", 14),
+            new Topping("Nr. 3", "Ekstra Løg", 5)
         };
         }
 
@@ -75,8 +74,14 @@ namespace PizzaStore2
         {
             Pizza p = new Pizza(id, Name, Topping, Price);
             pizzalist.Add(p);
-            totalprice += Price;
         }
+
+        public void AddTopping(string Id, string Name, double Price)
+        {
+            Topping t = new Topping(Id, Name, Price);
+            toppinglist.Add(t);
+        }
+
 
         public Pizza SearchPizza(string searchWord)
         {
@@ -97,13 +102,13 @@ namespace PizzaStore2
 
         }
 
-        public void DeletePizza(string searchWord)
+        public void DeletePizza(string searchword)
         {
             bool found = false;
             int index = 0;
             while (found == false && index <= pizzalist.Count - 1)
             {
-                if (pizzalist[index].Name.Equals(searchWord))
+                if (pizzalist[index].Name.Equals(searchword))
                 {
                     found = true;
                     pizzalist.RemoveAt(index);

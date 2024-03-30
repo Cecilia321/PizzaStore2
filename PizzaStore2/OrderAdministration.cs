@@ -9,12 +9,16 @@ namespace PizzaStore2
     internal class OrderAdministration
     {
         private List<Order> orderlist = new List<Order>();
+        private List<Topping> toppinglist;
+        private List<Pizza> pizzalists;
 
         internal List<Order> Orderlist1 { get => orderlist; set => orderlist = value; }
+        internal List<Topping> Toppinglist { get => toppinglist; set => toppinglist = value; }
+        internal List<Pizza> Pizzalists { get => pizzalists; set => pizzalists = value; }
 
-        public void CreateOrder(Costumer costumer, List<Pizza> pizza, int ordreId)
+        public void CreateOrder(Costumer costumer, List<Pizza> pizza, List<Drink> drinks, int ordreId, List<Topping> topping)
         {
-            Order o = new Order(pizza, costumer, ordreId);
+            Order o = new Order(pizza, costumer, ordreId, drinks, topping);
             orderlist.Add(o);
 
         }
@@ -29,7 +33,8 @@ namespace PizzaStore2
             return ol;
 
         }
-        public Order SearchOrder(string searchWord)
+
+        public Order SearchOrder(int searchWord)
         {
             bool found = false;
             int index = 0;
@@ -48,7 +53,8 @@ namespace PizzaStore2
 
         }
 
-        public void DeleteOrder(string searchWord)
+
+        public void DeleteOrder(int searchWord)
         {
             bool found = false;
             int index = 0;

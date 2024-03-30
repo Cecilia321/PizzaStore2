@@ -25,7 +25,7 @@ namespace PizzaStore2
         
         public override string ToString()
         {
-            return "Kundens navn: " + name.PadRight(10) + "Kundens tlf:" + number + "\n" ;
+            return "Navn: " + name.PadRight(10) + "Tlf:" + number + "\n" ;
         }
     }
 }
